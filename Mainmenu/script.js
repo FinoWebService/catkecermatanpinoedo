@@ -1,7 +1,7 @@
 /*************************************************
  * CAT KECERMATAN AKPOL
  * File : script.js
- * Fungsi : Mengatur logika ujian
+ * Fungsi widojwada: Mengatur logika ujian
  *************************************************/
 
 
