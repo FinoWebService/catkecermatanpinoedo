@@ -70,14 +70,12 @@
 
 <script src="script.js"></script>
 <script type="module">
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-analytics.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
 
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  // Import Firebase
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-app.js";
+  import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
+
+  // Config Firebase
   const firebaseConfig = {
     apiKey: "AIzaSyBvAuX66peHvmpKtvdh9MIk9Em3WnxDLLU",
     authDomain: "cat-kecermatan-cb9d1.firebaseapp.com",
@@ -88,9 +86,37 @@
     measurementId: "G-6F8G5PN134"
   };
 
-  // Initialize Firebase
+  // Init Firebase
   const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
+
+  // Init Database
+  const db = getFirestore(app);
+
+  // =============================
+  // TEST SIMPAN DATA
+  // =============================
+
+  async function testSimpan(){
+
+    try {
+      await addDoc(collection(db, "hasilTes"), {
+        nama: "Tes User",
+        nilai: 100,
+        waktu: new Date()
+      });
+
+      console.log("Data berhasil disimpan!");
+
+    } catch (e) {
+      console.error("Error:", e);
+    }
+
+  }
+
+  // Jalankan test
+  testSimpan();
+
 </script>
+
 </body>
 </html>
